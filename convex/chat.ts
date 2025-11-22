@@ -14,7 +14,7 @@ const rag = new RAG(components.rag, {
 
 const chatAgent = new Agent(components.agent, {
   name: "chat-agent",
-  languageModel: openai.chat("gpt-4o-mini"),
+  languageModel: openai.chat("gpt-5-mini"),
   instructions: `You are a helpful medical assistant integrated into a web application.
   
 You have access to the user's uploaded medical documents and records.
