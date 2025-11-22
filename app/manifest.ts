@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Your personal medical assistant powered by AI",
     start_url: "/",
     display: "standalone",
-    background_color: "#000000",
-    theme_color: "#000000",
+    background_color: "#171717",
+    theme_color: "#171717",
     orientation: "portrait-primary",
     icons: [
       {

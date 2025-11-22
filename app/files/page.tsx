@@ -417,7 +417,7 @@ export default function FilesPage() {
                         <FileText className="w-5 h-5 text-black" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-white truncate">
+                        <p className="text-sm font-medium text-white truncate text-wrap">
                           {file.fileName}
                         </p>
                         <p className="text-xs text-neutral-500">

@@ -23,7 +23,10 @@ export function TabNavigation() {
   ];
 
   return (
-    <div className="border-b border-neutral-800 bg-neutral-900/50 backdrop-blur-sm">
+    <div
+      className="border-b border-neutral-800 bg-neutral-900/50 backdrop-blur-sm"
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
+    >
       <div className="flex max-w-4xl mx-auto px-6 justify-end md:justify-start">
         {tabs.map((tab) => {
           const Icon = tab.icon;
