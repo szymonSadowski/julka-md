@@ -21,7 +21,10 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex overflow-hidden bg-neutral-900" style={{ height: '100dvh' }}>
+    <div
+      className="flex overflow-hidden bg-neutral-900"
+      style={{ height: "100dvh" }}
+    >
       <ThreadSidebar currentThreadId={threadId || undefined} />
 
       <main className="flex-1 flex flex-col min-h-0 overflow-hidden">

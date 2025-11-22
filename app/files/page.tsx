@@ -200,7 +200,7 @@ export default function FilesPage() {
 
   return (
     <main className="flex-1 w-full max-w-4xl mx-auto py-10 px-6">
-      <div className="mb-8">
+      <div className="mb-12 md:mb-8">
         <div className="flex items-center gap-4 mb-4">
           <Link href="/">
             <Button

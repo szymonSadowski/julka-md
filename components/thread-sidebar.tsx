@@ -69,7 +69,7 @@ export function ThreadSidebar({ currentThreadId }: ThreadSidebarProps) {
         className={`fixed md:relative top-0 left-0 w-64 border-r border-neutral-800 bg-neutral-900 flex flex-col z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         }`}
-        style={{ height: '100dvh', paddingTop: "env(safe-area-inset-top)" }}
+        style={{ height: "100dvh", paddingTop: "env(safe-area-inset-top)" }}
       >
         <div className="p-4 border-b border-neutral-800 space-y-2 shrink-0">
           <Link href="/files">
@@ -92,7 +92,7 @@ export function ThreadSidebar({ currentThreadId }: ThreadSidebarProps) {
           </Button>
         </div>
 
-        <ScrollArea className="flex-1 p-2">
+        <div className="flex-1 overflow-y-auto p-2 min-h-0">
           <div className="space-y-1">
             {threads?.page.map((thread) => {
               const isActive = thread._id === currentThreadId;
@@ -134,7 +134,7 @@ export function ThreadSidebar({ currentThreadId }: ThreadSidebarProps) {
               </p>
             )}
           </div>
-        </ScrollArea>
+        </div>
 
         {/* Close button for mobile */}
         <Button
