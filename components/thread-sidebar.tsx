@@ -49,7 +49,8 @@ export function ThreadSidebar({ currentThreadId }: ThreadSidebarProps) {
       <Button
         variant="ghost"
         size="icon"
-        className="fixed top-2 left-2 z-50 md:hidden bg-neutral-900/90 backdrop-blur-sm hover:bg-neutral-800"
+        className="fixed left-2 z-50 md:hidden bg-neutral-900/90 backdrop-blur-sm hover:bg-neutral-800"
+        style={{ top: "calc(env(safe-area-inset-top, 0px) + 0.5rem)" }}
         onClick={toggleSidebar}
       >
         <Menu className="w-5 h-5 text-white" />
@@ -68,6 +69,7 @@ export function ThreadSidebar({ currentThreadId }: ThreadSidebarProps) {
         className={`fixed md:relative top-0 left-0 w-64 border-r border-neutral-800 bg-neutral-900/95 backdrop-blur-sm flex flex-col h-screen z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         }`}
+        style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
         <div className="p-4 border-b border-neutral-800 space-y-2">
           <Link href="/files">

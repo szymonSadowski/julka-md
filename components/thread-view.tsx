@@ -38,7 +38,10 @@ export const ThreadView = ({ threadId }: { threadId: string }) => {
         </div>
       </div>
 
-      <div className="border-t border-neutral-800 bg-neutral-900/95 backdrop-blur-sm shrink-0">
+      <div
+        className="border-t border-neutral-800 bg-neutral-900/95 backdrop-blur-sm shrink-0"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
         <form
           onSubmit={handleSubmit}
           className="flex gap-2 p-4 max-w-4xl mx-auto"
