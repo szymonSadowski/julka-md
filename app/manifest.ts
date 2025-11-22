@@ -12,27 +12,27 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: "portrait-primary",
     icons: [
       {
-        src: "/julkamd.png",
+        src: "/square-logo-for-iphone.jpg",
         sizes: "192x192",
-        type: "image/png",
+        type: "image/jpeg",
         purpose: "any",
       },
       {
-        src: "/julkamd.png",
+        src: "/square-logo-for-iphone.jpg",
         sizes: "512x512",
-        type: "image/png",
+        type: "image/jpeg",
         purpose: "any",
       },
       {
-        src: "/julkamd.png",
+        src: "/square-logo-for-iphone.jpg",
         sizes: "192x192",
-        type: "image/png",
+        type: "image/jpeg",
         purpose: "maskable",
       },
       {
-        src: "/julkamd.png",
+        src: "/square-logo-for-iphone.jpg",
         sizes: "512x512",
-        type: "image/png",
+        type: "image/jpeg",
         purpose: "maskable",
       },
     ],
@@ -53,7 +53,7 @@ export default function manifest(): MetadataRoute.Manifest {
         url: "/?new=true",
         icons: [
           {
-            src: "/julkamd.png",
+            src: "/square-logo-for-iphone.jpg",
             sizes: "192x192",
           },
         ],
@@ -65,7 +65,7 @@ export default function manifest(): MetadataRoute.Manifest {
         url: "/search",
         icons: [
           {
-            src: "/julkamd.png",
+            src: "/square-logo-for-iphone.jpg",
             sizes: "192x192",
           },
         ],
@@ -77,7 +77,7 @@ export default function manifest(): MetadataRoute.Manifest {
         url: "/files",
         icons: [
           {
-            src: "/julkamd.png",
+            src: "/square-logo-for-iphone.jpg",
             sizes: "192x192",
           },
         ],

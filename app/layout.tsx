@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: "/julkamd.png",
-    apple: "/julkamd.png",
+    icon: "/square-logo-for-iphone.jpg",
+    apple: "/square-logo-for-iphone.jpg",
   },
 };
 
@@ -39,7 +39,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/julkamd.png" />
+        <link rel="apple-touch-icon" href="/square-logo-for-iphone.jpg" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
