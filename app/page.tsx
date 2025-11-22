@@ -21,10 +21,10 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden">
       <ThreadSidebar currentThreadId={threadId || undefined} />
 
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col min-h-0">
         <TabNavigation />
         {threadId ? (
           <ThreadView threadId={threadId} />
