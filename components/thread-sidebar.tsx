@@ -66,12 +66,12 @@ export function ThreadSidebar({ currentThreadId }: ThreadSidebarProps) {
 
       {/* Sidebar */}
       <div
-        className={`fixed md:relative top-0 left-0 w-64 border-r border-neutral-800 bg-neutral-900/95 backdrop-blur-sm flex flex-col h-screen z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed md:relative top-0 left-0 w-64 border-r border-neutral-800 bg-neutral-900 flex flex-col z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         }`}
-        style={{ paddingTop: "env(safe-area-inset-top)" }}
+        style={{ height: '100dvh', paddingTop: "env(safe-area-inset-top)" }}
       >
-        <div className="p-4 border-b border-neutral-800 space-y-2">
+        <div className="p-4 border-b border-neutral-800 space-y-2 shrink-0">
           <Link href="/files">
             <Button
               variant="outline"

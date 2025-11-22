@@ -102,14 +102,10 @@
       system-ui,
       -apple-system,
       sans-serif;
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
     margin: 0;
     padding: 0;
-    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    background-color: #171717;
   }
 }
 
