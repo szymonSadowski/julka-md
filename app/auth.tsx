@@ -18,9 +18,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         <Unauthenticated>
           <div className="flex justify-center items-center min-h-screen">
             <SignInButton>
-              <Button className="bg-white text-black">
-                Sign In With Google
-              </Button>
+              <Button>Sign In</Button>
             </SignInButton>
           </div>
         </Unauthenticated>
