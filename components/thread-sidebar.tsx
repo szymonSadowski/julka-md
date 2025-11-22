@@ -49,7 +49,7 @@ export function ThreadSidebar({ currentThreadId }: ThreadSidebarProps) {
       <Button
         variant="ghost"
         size="icon"
-        className="fixed top-4 left-4 z-50 md:hidden bg-neutral-900/90 backdrop-blur-sm hover:bg-neutral-800"
+        className="fixed top-2 left-2 z-50 md:hidden bg-neutral-900/90 backdrop-blur-sm hover:bg-neutral-800"
         onClick={toggleSidebar}
       >
         <Menu className="w-5 h-5 text-white" />
