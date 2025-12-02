@@ -71,12 +71,12 @@ export function ThreadSidebar({ currentThreadId }: ThreadSidebarProps) {
         }`}
         style={{ height: "100dvh", paddingTop: "env(safe-area-inset-top)" }}
       >
-        <div className="p-4 border-b border-neutral-800 space-y-2 shrink-0">
+        <div className="p-2 mt-1 border-b border-neutral-800 space-y-1 shrink-0 flex gap-1 flex-col">
           <Link href="/files">
             <Button
               variant="outline"
               className="w-full justify-start"
-              size="sm"
+              size="lg"
             >
               <FileText className="w-4 h-4 mr-2" />
               Manage Files
@@ -85,7 +85,7 @@ export function ThreadSidebar({ currentThreadId }: ThreadSidebarProps) {
           <Button
             onClick={handleCreateThread}
             className="w-full justify-start"
-            size="sm"
+            size="lg"
           >
             <Plus className="w-4 h-4 mr-2" />
             New Thread
