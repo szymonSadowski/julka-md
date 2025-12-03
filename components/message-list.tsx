@@ -5,12 +5,17 @@ import { Bot, User } from "lucide-react";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import { MarkdownRenderer } from "./markdown-renderer";
+import { useEffect, useRef } from "react";
 
 type MessageListPropts = {
   threadId: string;
+  onMessagesChange?: () => void;
 };
 
-export const MessageList = ({ threadId }: MessageListPropts) => {
+export const MessageList = ({
+  threadId,
+  onMessagesChange,
+}: MessageListPropts) => {
   const messagesResult = useThreadMessages(
     api.chat.listThreadMessages,
     { threadId },
@@ -18,6 +23,33 @@ export const MessageList = ({ threadId }: MessageListPropts) => {
   );
 
   const messages = messagesResult?.results || [];
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const prevMessageCountRef = useRef(messages.length);
+  const prevMessagesRef = useRef(messages);
+
+  // Scroll to bottom when messages change (new messages or content updates)
+  useEffect(() => {
+    const hasNewMessages = messages.length > prevMessageCountRef.current;
+    const hasContentChange =
+      messages.length > 0 &&
+      prevMessagesRef.current.length > 0 &&
+      messages[messages.length - 1]?.text !==
+        prevMessagesRef.current[prevMessagesRef.current.length - 1]?.text;
+
+    if (hasNewMessages || hasContentChange) {
+      // Use requestAnimationFrame to ensure DOM is updated
+      requestAnimationFrame(() => {
+        messagesEndRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
+      });
+      onMessagesChange?.();
+    }
+
+    prevMessageCountRef.current = messages.length;
+    prevMessagesRef.current = messages;
+  }, [messages, onMessagesChange]);
 
   if (messages.length === 0) {
     return (
@@ -28,7 +60,7 @@ export const MessageList = ({ threadId }: MessageListPropts) => {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 max-w-4xl mx-auto overflow-y-auto">
       {messages.map((message, index) => {
         const isUser = message.message?.role === "user";
 
@@ -69,6 +101,7 @@ export const MessageList = ({ threadId }: MessageListPropts) => {
           </div>
         );
       })}
+      <div ref={messagesEndRef} />
     </div>
   );
 };

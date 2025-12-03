@@ -27,7 +27,7 @@ export default function ChatPage() {
     >
       <ThreadSidebar currentThreadId={threadId || undefined} />
 
-      <main className="flex-1 flex flex-col min-h-0 overflow-hidden">
+      <main className="flex-1 flex flex-col min-h-0">
         <TabNavigation />
         {threadId ? (
           <ThreadView threadId={threadId} />
