@@ -16,11 +16,12 @@ export const MessageList = ({
   const messagesResult = useThreadMessages(
     api.chat.listThreadMessages,
     { threadId },
-    { initialNumItems: 10, stream: true }
+    { initialNumItems: 20, stream: true }
   );
 
   const messages = messagesResult?.results || [];
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const loadMoreRef = useRef<HTMLDivElement>(null);
   const prevMessageCountRef = useRef(messages.length);
   const prevMessagesRef = useRef(messages);
 
@@ -48,6 +49,27 @@ export const MessageList = ({
     prevMessagesRef.current = messages;
   }, [messages, onMessagesChange]);
 
+  // Load more messages when scrolling to top
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (
+          entries[0].isIntersecting &&
+          messagesResult?.status === "CanLoadMore"
+        ) {
+          messagesResult.loadMore(20);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [messagesResult]);
+
   if (messages.length === 0) {
     return (
       <div className="text-neutral-500 text-sm text-center py-8">
@@ -58,6 +80,12 @@ export const MessageList = ({
 
   return (
     <div className="space-y-4 max-w-4xl mx-auto overflow-y-auto">
+      <div ref={loadMoreRef} className="h-4" />
+      {messagesResult?.status === "LoadingMore" && (
+        <div className="text-neutral-500 text-sm text-center py-2">
+          Loading more messages...
+        </div>
+      )}
       {messages.map((message, index) => {
         const isUser = message.message?.role === "user";
 
