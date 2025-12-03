@@ -25,6 +25,7 @@ import {
 } from "@/lib/pdfUtils";
 import { Id } from "@/convex/_generated/dataModel";
 import Link from "next/link";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 export default function FilesPage() {
   const { user } = useUser();
@@ -395,7 +396,7 @@ export default function FilesPage() {
         <CardContent>
           {!files ? (
             <div className="flex items-center justify-center py-8">
-              <Loader2 className="h-6 w-6 animate-spin text-neutral-400" />
+              <LoadingSpinner />
             </div>
           ) : files.length === 0 ? (
             <div className="text-center py-8">

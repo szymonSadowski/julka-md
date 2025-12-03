@@ -10,6 +10,7 @@ import { TabNavigation } from "@/components/tab-navigation";
 import { Search, FileText, Loader2 } from "lucide-react";
 import { SearchEntry, SearchResult } from "@convex-dev/rag";
 import { Value } from "convex/values";
+import { MarkdownRenderer } from "@/components/markdown-renderer";
 
 type searchResults = {
   results: SearchResult[];
@@ -30,7 +31,27 @@ export default function SearchPage() {
     setIsSearching(true);
     try {
       const searchResults = await searchDocuments({ query: query.trim() });
-      setResults(searchResults);
+
+      // Filter results to only show entries with score above 0.4
+      const filteredResults = searchResults.results.filter(
+        (result) => result.score > 0.4
+      );
+
+      // Get unique entry IDs from filtered results
+      const filteredEntryIds = new Set(
+        filteredResults.map((result) => result.entryId)
+      );
+
+      // Filter entries to only include those with high scores
+      const filteredEntries = searchResults.entries.filter((entry) =>
+        filteredEntryIds.has(entry.entryId)
+      );
+
+      setResults({
+        results: filteredResults,
+        text: searchResults.text,
+        entries: filteredEntries,
+      });
     } catch (error) {
       console.error("Search failed:", error);
       setResults({ results: [], text: "", entries: [] });
@@ -89,28 +110,31 @@ export default function SearchPage() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-semibold">
-                    {results.results.length > 0
-                      ? `Found ${results.results.length} result${results.results.length !== 1 ? "s" : ""}`
+                    {results.entries.length > 0
+                      ? `Found ${results.entries.length} result${results.entries.length !== 1 ? "s" : ""}`
                       : "No results found"}
                   </h2>
                 </div>
 
                 {results.entries.length > 0 ? (
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     {results.entries.map((entry, index: number) => (
                       <div
                         key={entry.entryId || index}
-                        className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-4 hover:bg-neutral-800/50 transition-colors"
+                        className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-6 hover:bg-neutral-800/50 transition-colors"
                       >
                         <div className="flex items-start gap-3">
                           <FileText className="w-5 h-5 text-neutral-400 shrink-0 mt-1" />
-                          <div className="flex-1">
-                            <h3 className="font-medium text-white mb-3">
-                              {entry.title}
-                            </h3>
-                            <p className="text-sm text-neutral-300 whitespace-pre-wrap leading-relaxed">
-                              {entry.text}
-                            </p>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-3 mb-4">
+                              <h3 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide">
+                                Result {index + 1}
+                              </h3>
+                              <span className="text-white font-medium">
+                                {entry.title}
+                              </span>
+                            </div>
+                            <MarkdownRenderer>{entry.text}</MarkdownRenderer>
                           </div>
                         </div>
                       </div>

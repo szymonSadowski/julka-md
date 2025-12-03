@@ -5,14 +5,15 @@ import { ConvexClientProvider } from "./convex-provider";
 import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
 import { ClerkProvider, SignInButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
       <ConvexClientProvider>
         <AuthLoading>
-          <div className="flex justify-center items-center min-h-screen">
-            <p className="text-white">Loading...</p>
+          <div className="flex justify-center items-center min-h-screen bg-neutral-900">
+            <LoadingSpinner />
           </div>
         </AuthLoading>
         <Unauthenticated>
