@@ -1,9 +1,6 @@
 import { api } from "@/convex/_generated/api";
 import { useThreadMessages } from "@convex-dev/agent/react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Bot, User } from "lucide-react";
-import Image from "next/image";
-import Markdown from "react-markdown";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { MarkdownRenderer } from "./markdown-renderer";
 import { useEffect, useRef } from "react";
 

@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { ThreadSidebar } from "@/components/thread-sidebar";
 import { TabNavigation } from "@/components/tab-navigation";
 import { Search, FileText, Loader2 } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { SearchEntry, SearchResult } from "@convex-dev/rag";
 import { Value } from "convex/values";
 

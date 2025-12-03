@@ -1,11 +1,10 @@
 "use client";
 
 import { api } from "@/convex/_generated/api";
-import { useAction, useMutation } from "convex/react";
-import { useState, useRef, useEffect } from "react";
+import { useMutation } from "convex/react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Send } from "lucide-react";
 import { MessageList } from "./message-list";
 
